@@ -19,7 +19,8 @@ export class ClientesComponent {
       birthDate: new Date('1995-06-15'),
       createAt: new Date(),
       email: '',
-      active: true
+      active: true,
+      addresses: []
     },
     {
       clienteId: 1,
@@ -29,7 +30,8 @@ export class ClientesComponent {
       birthDate: new Date('1995-06-15'),
       createAt: new Date(),
       email: '',
-      active: false
+      active: false,
+      addresses: []
     }
   ]
 }
