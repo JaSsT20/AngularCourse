@@ -1,0 +1,34 @@
+<h1>Mis clientes</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Id</th>
+      <th>Nombre</th>
+      <th>Apellido</th>
+      <th>Cedula</th>
+      <th>Acciones</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let cliente of clientes">
+      <td>{{ cliente.clienteId }}</td>
+      <td>{{ cliente.name }}</td>
+      <td>{{ cliente.lastName }}</td>
+      <td>{{ cliente.cedula }}</td>
+      <td>
+        <ng-container
+          *ngIf="cliente.active; then botonActivo; else botonInactivo"
+        ></ng-container>
+
+        <ng-template #botonActivo>
+          <button [ngClass]="{'activo btn btn-danger': cliente.active}">Desactivar</button>
+        </ng-template>
+
+        <ng-template #botonInactivo>
+          <button [ngClass]="{'activo btn btn-danger': cliente.active}">Activar</button>
+        </ng-template>
+      </td>
+    </tr>
+  </tbody>
+</table>
