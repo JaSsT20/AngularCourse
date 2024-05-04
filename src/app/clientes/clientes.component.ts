@@ -32,6 +32,39 @@ export class ClientesComponent {
       email: '',
       active: false,
       addresses: []
+    },
+    {
+      clienteId: 2,
+      name: 'Elian',
+      lastName: 'Garcia',
+      cedula: '123456789',
+      birthDate: new Date('1995-06-15'),
+      createAt: new Date(),
+      email: '',
+      active: false,
+      addresses: []
+    },
+    {
+      clienteId: 3,
+      name: 'Joseph',
+      lastName: 'Garcia',
+      cedula: '123456789',
+      birthDate: new Date('1995-06-15'),
+      createAt: new Date(),
+      email: '',
+      active: true,
+      addresses: []
+    },
+    {
+      clienteId: 4,
+      name: 'Gregory',
+      lastName: 'Suarez',
+      cedula: '123456789',
+      birthDate: new Date('1995-06-15'),
+      createAt: new Date(),
+      email: '',
+      active: false,
+      addresses: []
     }
   ]
 }
