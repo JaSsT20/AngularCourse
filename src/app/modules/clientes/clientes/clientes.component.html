@@ -29,6 +29,7 @@
           <button [ngClass]="{'activo btn btn-danger': cliente.active}">Activar</button>
         </ng-template>
       </td>
+      <td><a class="btn btn-primary" [routerLink]="['/cliente', cliente.clienteId]">Ver</a></td>
     </tr>
   </tbody>
 </table>

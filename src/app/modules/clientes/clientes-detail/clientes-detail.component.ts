@@ -1,15 +1,14 @@
 import { Component } from '@angular/core';
-import { Cliente } from '../models/cliente';
-import { CommonModule } from '@angular/common';
+import { Cliente } from '../../../models/cliente';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
-  selector: 'app-clientes',
-  standalone: true,
-  imports: [CommonModule],
-  templateUrl: './clientes.component.html',
-  styleUrl: './clientes.component.css'
+  selector: 'app-clientes-detail',
+  standalone: false,
+  templateUrl: './clientes-detail.component.html',
+  styleUrl: './clientes-detail.component.css'
 })
-export class ClientesComponent {
+export class ClientesDetailComponent {
   clientes: Cliente[] = [
     {
       clienteId: 0,
@@ -67,4 +66,17 @@ export class ClientesComponent {
       addresses: []
     }
   ]
+
+  cliente : Cliente = new Cliente();
+
+  constructor(private routeManager: ActivatedRoute) {
+    this.routeManager.params.subscribe(params => {
+      if(params['id']){
+        const foundCliente = this.clientes.find(cliente => cliente.clienteId == params['id']);
+        if (foundCliente) {
+          this.cliente = foundCliente;
+        }
+      }
+    });
+  }
 }
