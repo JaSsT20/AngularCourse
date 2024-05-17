@@ -1,1 +1,7 @@
 /* You can add global styles to this file, and also import other style files */
+@import "../node_modules/bootstrap-icons/font/bootstrap-icons.css";
+
+.container {
+  width: 80%; /* Ajusta el ancho según tus necesidades */
+  margin: 0 auto;
+}
