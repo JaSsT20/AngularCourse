@@ -8,10 +8,10 @@
         <div class="card-body">
           <div class="row">
             <div class="col-md-4">
-              <img src="https://via.placeholder.com/150" alt="ClienteImg" class="img-fluid rounded-circle mb-3">
+              <img src="https://rencanakan.id/wp-content/uploads/2024/02/user-account-management-logo-user-icon-11562867145a56rus2zwu-removebg-preview.png" alt="ClienteImg" width="200" height="200" class="img-fluid rounded-circle mb-3">
             </div>
             <div class="col-md-8">
-              <h4 class="card-title">{{ cliente.name }} {{ cliente.lastName }}</h4>
+              <h4 class="card-title">{{cliente.clienteId}}- {{ cliente.name }} {{ cliente.lastName }}</h4>
               <p class="card-text">Cédula: {{ cliente.cedula }}</p>
               <p class="card-text">Fecha de nacimiento: {{ cliente.birthDate | date:'dd/MM/yyyy' }}</p>
               <p class="card-text">Fecha de creación: {{ cliente.createAt | date:'dd/MM/yyyy' }}</p>
