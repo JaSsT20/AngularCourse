@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { Cliente } from '../../../models/cliente';
-import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-clientes',
@@ -11,7 +10,7 @@ import { CommonModule } from '@angular/common';
 export class ClientesComponent {
   clientes: Cliente[] = [
     {
-      clienteId: 0,
+      clienteId: 1,
       name: 'Levid',
       lastName: 'Tejada',
       cedula: '123456789',
@@ -22,7 +21,7 @@ export class ClientesComponent {
       addresses: []
     },
     {
-      clienteId: 1,
+      clienteId: 2,
       name: 'Grey',
       lastName: 'Polanco',
       cedula: '123456789',
@@ -33,7 +32,7 @@ export class ClientesComponent {
       addresses: []
     },
     {
-      clienteId: 2,
+      clienteId: 3,
       name: 'Elian',
       lastName: 'Garcia',
       cedula: '123456789',
@@ -44,7 +43,7 @@ export class ClientesComponent {
       addresses: []
     },
     {
-      clienteId: 3,
+      clienteId: 4,
       name: 'Joseph',
       lastName: 'Garcia',
       cedula: '123456789',
@@ -55,7 +54,7 @@ export class ClientesComponent {
       addresses: []
     },
     {
-      clienteId: 4,
+      clienteId: 5,
       name: 'Gregory',
       lastName: 'Suarez',
       cedula: '123456789',

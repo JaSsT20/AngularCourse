@@ -1,0 +1,11 @@
+<div *ngIf="direccion; else listaDirecciones">
+  <h3>Detalle de la Dirección</h3>
+  <p>{{ direccion.city }} - {{ direccion.street }}, {{ direccion.city }}</p>
+</div>
+
+<ng-template #listaDirecciones>
+  <h3>Direcciones del Cliente</h3>
+  <div *ngFor="let direccion of filteredDirecciones">
+    <p>{{ direccion.city }} - {{ direccion.street }}, {{ direccion.city }}</p>
+  </div>
+</ng-template>

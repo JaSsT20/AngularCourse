@@ -35,6 +35,7 @@
           <button [ngClass]="{'activo btn btn-danger': direccion.active}">Activar</button>
         </ng-template>
       </td>
+      <td><a class="btn btn-primary" [routerLink]="['/direcciones/direccion', direccion.addressId]">Ver</a></td>
     </tr>
   </tbody>
 </table>

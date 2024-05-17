@@ -1,11 +1,9 @@
 import { Component } from '@angular/core';
-import { Direccion } from '../models/direccion';
-import { CommonModule } from '@angular/common';
+import { Direccion } from '../../../models/direccion';
 
 @Component({
   selector: 'app-direccion',
-  standalone: true,
-  imports: [CommonModule],
+  standalone: false,
   templateUrl: './direccion.component.html',
   styleUrl: './direccion.component.css'
 })
@@ -13,7 +11,7 @@ export class DireccionComponent {
 
   direcciones: Direccion[] = [
     {
-      addressId: 0,
+      addressId: 1,
       alias: 'Casa',
       street: 'Calle 1',
       city: 'Ciudad 1',
@@ -22,10 +20,10 @@ export class DireccionComponent {
       country: 'País 1',
       active: true,
       createAt: '2021-07-01',
-      clienteId: 0
+      clienteId: 1
     },
     {
-      addressId: 1,
+      addressId: 2,
       alias: 'Trabajo',
       street: 'Calle 2',
       city: 'Ciudad 2',
@@ -37,7 +35,7 @@ export class DireccionComponent {
       clienteId: 2
     },
     {
-      addressId: 2,
+      addressId: 3,
       alias: 'Otro',
       street: 'Calle 3',
       city: 'Ciudad 3',
@@ -46,10 +44,10 @@ export class DireccionComponent {
       country: 'País 3',
       active: true,
       createAt: '2021-07-01',
-      clienteId: 1
+      clienteId: 3
     },
     {
-      addressId: 3,
+      addressId: 4,
       alias: 'Casa',
       street: 'Calle 4',
       city: 'Ciudad 4',
@@ -58,10 +56,10 @@ export class DireccionComponent {
       country: 'País 4',
       active: false,
       createAt: '2021-07-01',
-      clienteId: 3
+      clienteId: 4
     },
     {
-      addressId: 4,
+      addressId: 5,
       alias: 'Trabajo',
       street: 'Calle 5',
       city: 'Ciudad 5',
@@ -70,8 +68,7 @@ export class DireccionComponent {
       country: 'País 5',
       active: true,
       createAt: '2021-07-01',
-      clienteId: 4
+      clienteId: 5
     }
   ]
-
 }
