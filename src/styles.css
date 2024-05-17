@@ -2,6 +2,8 @@
 @import "../node_modules/bootstrap-icons/font/bootstrap-icons.css";
 
 .container {
-  width: 80%; /* Ajusta el ancho según tus necesidades */
-  margin: 0 auto;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }

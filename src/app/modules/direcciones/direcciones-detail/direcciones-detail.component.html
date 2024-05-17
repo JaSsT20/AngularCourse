@@ -1,11 +1,44 @@
-<div *ngIf="direccion; else listaDirecciones">
-  <h3>Detalle de la Dirección</h3>
-  <p>{{ direccion.city }} - {{ direccion.street }}, {{ direccion.city }}</p>
-</div>
-
-<ng-template #listaDirecciones>
-  <h3>Direcciones del Cliente</h3>
-  <div *ngFor="let direccion of filteredDirecciones">
-    <p>{{ direccion.city }} - {{ direccion.street }}, {{ direccion.city }}</p>
+<div class="container">
+  <div *ngIf="direccion; else listaDirecciones">
+    <div class="row justify-content-center">
+      <div class="col-md-6">
+        <div class="card shadow-lg">
+          <div class="card-header bg-primary text-white">
+            <h3 class="card-title">Detalle de la Dirección</h3>
+          </div>
+          <div class="card-body">
+            <h4 class="card-title">{{ direccion.alias }}</h4>
+            <p class="card-text">{{ direccion.street }}, {{ direccion.city }}, {{ direccion.state }} {{ direccion.zipCode }}</p>
+            <p class="card-text">{{ direccion.country }}</p>
+            <div class="d-flex justify-content-end">
+              <span class="badge bg-{{ direccion.active ? 'success' : 'danger' }}">{{ direccion.active ? 'Activa' : 'Inactiva' }}</span>
+            </div>
+            <p class="card-text">Fecha de creación: {{ direccion.createAt | date:'dd/MM/yyyy' }}</p>
+            <p class="card-text">Cliente ID: {{ direccion.clienteId }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
-</ng-template>
+
+  <ng-template #listaDirecciones>
+    <div class="row">
+      <div class="col-md-6" *ngFor="let direccion of filteredDirecciones">
+        <div class="card shadow-lg mb-4">
+          <div class="card-header bg-primary text-white">
+            <h3 class="card-title">{{ direccion.alias }}</h3>
+          </div>
+          <div class="card-body">
+            <p class="card-text">{{ direccion.street }}, {{ direccion.city }}, {{ direccion.state }} {{ direccion.zipCode }}</p>
+            <p class="card-text">{{ direccion.country }}</p>
+            <div class="d-flex justify-content-end">
+              <span class="badge bg-{{ direccion.active ? 'success' : 'danger' }}">{{ direccion.active ? 'Activa' : 'Inactiva' }}</span>
+            </div>
+            <p class="card-text">Fecha de creación: {{ direccion.createAt | date:'dd/MM/yyyy' }}</p>
+            <p class="card-text">Cliente ID: {{ direccion.clienteId }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </ng-template>
+</div>

@@ -1,41 +1,52 @@
-<h1>Direcciones</h1>
-
-<table class="table table-responsive">
-  <thead>
-    <tr>
-      <th>Id</th>
-      <th>Alias</th>
-      <th>Calle</th>
-      <th>Ciudad</th>
-      <th>Estado</th>
-      <th>País</th>
-      <th>Cliente</th>
-      <th>Acciones</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr *ngFor="let direccion of direcciones">
-      <td>{{direccion.addressId}}</td>
-      <td>{{direccion.alias}}</td>
-      <td>{{direccion.street}}</td>
-      <td>{{direccion.city}}</td>
-      <td>{{direccion.state}}</td>
-      <td>{{direccion.country}}</td>
-      <td>{{direccion.clienteId}}</td>
-      <td>
-        <ng-container
-         *ngIf="direccion.active; then botonActivo; else botonInactivo">
-        </ng-container>
-
-        <ng-template #botonActivo>
-          <button [ngClass]="{'activo btn btn-danger': direccion.active}">Desactivar</button>
-        </ng-template>
-
-        <ng-template #botonInactivo>
-          <button [ngClass]="{'activo btn btn-danger': direccion.active}">Activar</button>
-        </ng-template>
-      </td>
-      <td><a class="btn btn-primary" [routerLink]="['/direcciones/direccion', direccion.addressId]">Ver</a></td>
-    </tr>
-  </tbody>
-</table>
+<div class="container">
+  <div class="card">
+    <div class="card-header"><h3>Direcciones</h3></div>
+    <div class="card-body">
+      <table class="table table-responsive">
+        <thead>
+          <tr>
+            <th>Id</th>
+            <th>Alias</th>
+            <th>Calle</th>
+            <th>Ciudad</th>
+            <th>Estado</th>
+            <th>País</th>
+            <th>Cliente</th>
+            <th>Acciones</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let direccion of direcciones">
+            <td>{{direccion.addressId}}</td>
+            <td>{{direccion.alias}}</td>
+            <td>{{direccion.street}}</td>
+            <td>{{direccion.city}}</td>
+            <td>{{direccion.state}}</td>
+            <td>{{direccion.country}}</td>
+            <td>{{direccion.clienteId}}</td>
+            <td>
+              <ng-container
+               *ngIf="direccion.active; then botonActivo; else botonInactivo">
+              </ng-container>
+      
+              <ng-template #botonActivo>
+                <button [ngClass]="{ 'activo btn btn-danger me-2': direccion.active }">
+                  <i class="bi bi-trash"></i>
+                </button>
+              </ng-template>
+      
+              <ng-template #botonInactivo>
+                <button [ngClass]="{ 'inactivo btn btn-success me-2': !direccion.active }">
+                  <i class="bi bi-plus"></i>
+                </button>
+              </ng-template>
+      
+              <a class="btn btn-primary" [routerLink]="['/direcciones/direccion', direccion.addressId]">
+              <i class="bi bi-eye"></i></a>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

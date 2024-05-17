@@ -1,36 +1,57 @@
-<h1>Mis clientes</h1>
-
-<table class="table table-responsive">
-  <thead>
-    <tr>
-      <th>Id</th>
-      <th>Nombre</th>
-      <th>Apellido</th>
-      <th>Cedula</th>
-      <th>Acciones</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr *ngFor="let cliente of clientes">
-      <td>{{ cliente.clienteId }}</td>
-      <td>{{ cliente.name }}</td>
-      <td>{{ cliente.lastName }}</td>
-      <td>{{ cliente.cedula }}</td>
-      <td>
-        <ng-container
-          *ngIf="cliente.active; then botonActivo; else botonInactivo"
-        ></ng-container>
-
-        <ng-template #botonActivo>
-          <button [ngClass]="{'activo btn btn-danger': cliente.active}">Desactivar</button>
-        </ng-template>
-
-        <ng-template #botonInactivo>
-          <button [ngClass]="{'activo btn btn-danger': cliente.active}">Activar</button>
-        </ng-template>
-      </td>
-      <td><a class="btn btn-primary" [routerLink]="['/cliente', cliente.clienteId]">Ver</a></td>
-      <td><a class="btn btn-primary" [routerLink]="['/direcciones/cliente', cliente.clienteId]">Direcciones</a></td>
-    </tr>
-  </tbody>
-</table>
+<div class="container">
+  <div class="card">
+    <div class="card-header"><h3>Lista de clientes</h3></div>
+    <div class="card-body">
+      <table class="table table-responsive text-center">
+        <thead>
+          <tr>
+            <th>Id</th>
+            <th>Nombre</th>
+            <th>Apellido</th>
+            <th>Cedula</th>
+            <th>Acciones</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let cliente of clientes">
+            <td>{{ cliente.clienteId }}</td>
+            <td>{{ cliente.name }}</td>
+            <td>{{ cliente.lastName }}</td>
+            <td>{{ cliente.cedula }}</td>
+            <td>
+              <ng-container
+                *ngIf="cliente.active; then botonActivo; else botonInactivo"
+              ></ng-container>
+  
+              <ng-template #botonActivo>
+                <button [ngClass]="{ 'activo btn btn-danger me-2': cliente.active }">
+                  <i class="bi bi-trash"></i>
+                </button>
+              </ng-template>
+  
+              <ng-template #botonInactivo>
+                <button [ngClass]="{ 'inactivo btn btn-success me-2': !cliente.active }">
+                  <i class="bi bi-plus"></i>
+                </button>
+              </ng-template>
+              
+              <a
+                class="btn btn-primary me-2"
+                [routerLink]="['/cliente', cliente.clienteId]"
+                >
+                <i class="bi bi-eye"></i>
+              </a>
+  
+              <a
+                class="btn btn-info me-2"
+                [routerLink]="['/direcciones/cliente', cliente.clienteId]"
+                >
+                <i class="bi bi-geo-alt"></i>
+              </a>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
