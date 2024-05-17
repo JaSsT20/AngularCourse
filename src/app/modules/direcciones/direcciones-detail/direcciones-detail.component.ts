@@ -72,21 +72,21 @@ export class DireccionesDetailComponent {
     }
   ]
 
-  filteredDirecciones: Direccion[] = [];
+  listaFiltrada: Direccion[] = [];
   direccion: Direccion | null = null;
 
-  constructor(private route: ActivatedRoute) { }
-
-  ngOnInit(): void {
+  constructor(private route: ActivatedRoute) {
     this.route.params.subscribe(params => {
       if (params['clienteId']) {
         const clienteId = +params['clienteId'];
-        this.filteredDirecciones = this.direcciones.filter(direccion => direccion.clienteId === clienteId);
-        this.direccion = null; // Clear single direction view if any
-      } else if (params['id']) {
-        const addressId = +params['id'];
-        this.direccion = this.direcciones.find(direccion => direccion.addressId === addressId) || null;
-        this.filteredDirecciones = []; // Clear list view if any
+        this.listaFiltrada = this.direcciones.filter(direccion => direccion.clienteId === clienteId);
+      } 
+      else {
+        const direccionId = +params['id'];
+        const direccionEncontrada = this.direcciones.find(direccion => direccion.addressId === direccionId);
+        if(direccionEncontrada) {
+          this.direccion = direccionEncontrada;
+        }
       }
     });
   }
