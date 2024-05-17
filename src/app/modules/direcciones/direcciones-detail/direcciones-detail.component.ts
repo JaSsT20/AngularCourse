@@ -81,7 +81,7 @@ export class DireccionesDetailComponent {
         const clienteId = +params['clienteId'];
         this.listaFiltrada = this.direcciones.filter(direccion => direccion.clienteId === clienteId);
       } 
-      else {
+      else if (params['id']){
         const direccionId = +params['id'];
         const direccionEncontrada = this.direcciones.find(direccion => direccion.addressId === direccionId);
         if(direccionEncontrada) {
