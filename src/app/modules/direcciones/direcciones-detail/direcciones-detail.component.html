@@ -1,43 +1,37 @@
 <div class="container">
-  <ng-container
-    *ngIf="direccion; then unaDireccion; else listaDirecciones"
-  ></ng-container>
-</div>
-
-<ng-template #unaDireccion>
-  <div class="row justify-content-center">
-    <div class="col-md-6">
-      <div class="card shadow-lg">
-        <div class="card-header bg-primary text-white">
-          <h3 class="card-title">Detalle de la Dirección</h3>
-        </div>
-        <div class="card-body">
-          <h4 class="card-title">{{ direccion!.alias }}</h4>
-          <p class="card-text">
-            {{ direccion!.street }}, {{ direccion!.city }},
-            {{ direccion!.state }}
-            {{ direccion!.zipCode }}
-          </p>
-          <p class="card-text">{{ direccion!.country }}</p>
-          <div class="d-flex justify-content-end">
-            <span
-              class="badge bg-{{ direccion!.active ? 'success' : 'danger' }}"
-              >{{ direccion!.active ? "Activa" : "Inactiva" }}</span
-            >
+  <ng-container *ngIf="direccion | async as dir; else listaDirecciones">
+    <div class="row justify-content-center">
+      <div class="col-md-6">
+        <div class="card shadow-lg">
+          <div class="card-header bg-primary text-white">
+            <h3 class="card-title">Detalle de la Dirección</h3>
           </div>
-          <p class="card-text">
-            Fecha de creación: {{ direccion!.createAt | date : "dd/MM/yyyy" }}
-          </p>
-          <p class="card-text">Cliente ID: {{ direccion!.clienteId }}</p>
+          <div class="card-body">
+            <h4 class="card-title">{{ dir!.alias }}</h4>
+            <p class="card-text">
+              {{ dir!.street }}, {{ dir!.city }}, {{ dir!.state }}
+              {{ dir!.zipCode }}
+            </p>
+            <p class="card-text">{{ dir!.country }}</p>
+            <div class="d-flex justify-content-end">
+              <span class="badge bg-{{ dir!.active ? 'success' : 'danger' }}">
+                {{ dir!.active ? "Activa" : "Inactiva" }}
+              </span>
+            </div>
+            <p class="card-text">
+              Fecha de creación: {{ dir!.createAt | date : "dd/MM/yyyy" }}
+            </p>
+            <p class="card-text">Cliente ID: {{ dir!.clienteId }}</p>
+          </div>
         </div>
       </div>
     </div>
-  </div>
-</ng-template>
+  </ng-container>
+</div>
 
 <ng-template #listaDirecciones>
-  <div class="row">
-    <div class="col-md-6" *ngFor="let direccion of listaFiltrada">
+  <div class="row" *ngIf="listaFiltrada | async as lista">
+    <div class="col-md-6" *ngFor="let direccion of lista">
       <div class="card shadow-lg mb-4">
         <div class="card-header bg-primary text-white">
           <h3 class="card-title">{{ direccion.alias }}</h3>
@@ -51,8 +45,9 @@
           <div class="d-flex justify-content-end">
             <span
               class="badge bg-{{ direccion.active ? 'success' : 'danger' }}"
-              >{{ direccion.active ? "Activa" : "Inactiva" }}</span
             >
+              {{ direccion.active ? "Activa" : "Inactiva" }}
+            </span>
           </div>
           <p class="card-text">
             Fecha de creación: {{ direccion.createAt | date : "dd/MM/yyyy" }}

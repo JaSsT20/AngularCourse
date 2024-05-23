@@ -15,7 +15,7 @@
             <th>Acciones</th>
           </tr>
         </thead>
-        <tbody>
+        <tbody *ngIf="listaDirecciones | async as direcciones">
           <tr *ngFor="let direccion of direcciones">
             <td>{{direccion.addressId}}</td>
             <td>{{direccion.alias}}</td>
