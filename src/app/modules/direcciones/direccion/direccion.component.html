@@ -30,13 +30,13 @@
               </ng-container>
       
               <ng-template #botonActivo>
-                <button [ngClass]="{ 'activo btn btn-danger me-2': direccion.active }">
+                <button (click)="updateEstado(direccion.addressId)" class="btn btn-danger me-2">
                   <i class="bi bi-trash"></i>
                 </button>
               </ng-template>
-      
+
               <ng-template #botonInactivo>
-                <button [ngClass]="{ 'inactivo btn btn-success me-2': !direccion.active }">
+                <button (click)="updateEstado(direccion.addressId)" class="btn btn-success me-2">
                   <i class="bi bi-plus"></i>
                 </button>
               </ng-template>

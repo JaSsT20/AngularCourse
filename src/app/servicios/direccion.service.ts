@@ -73,6 +73,7 @@ export class DireccionService {
   constructor() { }
 
   getDirecciones(): Observable<Direccion[]> {
+    localStorage.getItem('direcciones') ? this.direcciones = JSON.parse(localStorage.getItem('direcciones') || '{}') : this.direcciones;
     return of(this.direcciones);
   }
 
@@ -82,6 +83,25 @@ export class DireccionService {
   }
 
   getDireccionesDeCliente(clienteId: number): Observable<Direccion[]> {
-    return of(this.direcciones.filter(direccion => direccion.clienteId === clienteId));
+    localStorage.getItem('direcciones') ? this.direcciones = JSON.parse(localStorage.getItem('direcciones') || '{}') : this.direcciones;
+    const direcciones = this.direcciones.filter(direccion => direccion.clienteId === clienteId);
+    return of(direcciones);
+  }
+
+  createDireccion(direccion: Direccion): Observable<Direccion> {
+    const id = this.direcciones.length + 1;
+    direccion.addressId = id;
+    this.direcciones.push(direccion);
+    return of(direccion);
+  }
+
+  updateDireccion(direccionId: number): Observable<Direccion | undefined> | undefined {
+    const direccion = this.direcciones.find(direccion => direccion.addressId === direccionId);
+    if (direccion) {
+      direccion.active = !direccion.active;
+      localStorage.setItem('direcciones', JSON.stringify(this.direcciones));
+      return of(direccion);
+    }
+    return undefined;
   }
 }

@@ -15,6 +15,15 @@ export class ClientesComponent {
   constructor(private _servicio : ClientesService) { }
 
   ngOnInit() {
+    this.cargarClientes();
+  }
+
+  cargarClientes() {
     this.listaClientes = this._servicio.getClientes();
+  }
+
+  updateEstado(clienteId : number) {
+    this._servicio.updateCliente(clienteId);
+    this.cargarClientes();
   }
 }

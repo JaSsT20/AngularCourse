@@ -18,4 +18,12 @@ export class DireccionComponent {
     this.listaDirecciones = this._direccionService.getDirecciones();
   }
 
+  cargarDirecciones() {
+    this.listaDirecciones = this._direccionService.getDirecciones();
+  }
+  
+  updateEstado(direccionId : number) {
+    this._direccionService.updateDireccion(direccionId);
+    this.cargarDirecciones();
+  }
 }
