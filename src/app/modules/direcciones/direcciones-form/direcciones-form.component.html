@@ -1,0 +1,132 @@
+<div class="container">
+  <form [formGroup]="formulario" (ngSubmit)="onSubmit()">
+    <div class="card text-center">
+      <div class="card-header">
+        <h4>Formulario de direcciones</h4>
+
+        <div class="input-group mb-3">
+          <input type="number" class="form-control" [formControl]="inputSearch">
+          <div class="input-group-append">
+            <button class="btn btn-outline-primary" type="button" (click)="onSearch()"><i class="bi bi-search"></i></button>
+          </div>
+        </div>
+        
+      </div>
+      <div class="card-body">
+        <div class="row">
+          <!--Alias-->
+          <div class="col-md-3">
+            <label for="alias" class="form-label">Alias</label>
+            <input
+              formControlName="alias"
+              type="text"
+              name="alias"
+              class="form-control"
+              aria-describedby="helpId"
+            />
+            <small id="helpId" class="text-danger">{{getErrors('alias', 'Alias')}}</small>
+          </div>
+          <div class="col">
+            <!--Calle-->
+            <label for="street" class="form-label">Calle</label>
+            <input
+              formControlName="street"
+              type="text"
+              name="street"
+              class="form-control"
+              aria-describedby="helpId"
+            />
+            <small id="helpId" class="text-danger">{{getErrors('street', 'Calle')}}</small>
+          </div>
+          <!--Ciudad-->
+          <div class="col-md-4">
+            <label for="city" class="form-label">Ciudad</label>
+            <input
+              formControlName="city"
+              type="text"
+              name="city"
+              class="form-control"
+              aria-describedby="helpId"
+            />
+            <small id="helpId" class="text-danger">{{getErrors('city', 'Ciudad')}}</small>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-5">
+            <label for="state" class="form-label">Estado</label>
+            <input
+              formControlName="state"
+              type="text"
+              name="state"
+              class="form-control"
+              aria-describedby="helpId"
+              />
+            <small id="helpId" class="text-danger">{{getErrors('state', 'Estado')}}</small>
+          </div>
+          <div class="col-md-3">
+            <label for="zipCode" class="form-label">Codigo ZIP</label>
+            <input
+              formControlName="zipCode"
+              type="text"
+              name="zipCode"
+              class="form-control"
+              aria-describedby="helpId"
+              />
+            <small id="helpId" class="text-danger">{{getErrors('zipCode', 'Código ZIP')}}</small>
+          </div>
+          <div class="col">
+            <label for="country" class="form-label">País</label>
+            <input
+              formControlName="country"
+              type="text"
+              name="country"
+              class="form-control"
+              aria-describedby="helpId"
+              />
+            <small id="helpId" class="text-danger">{{getErrors('country', 'País')}}</small>
+          </div>
+        </div>
+        <div class="row">
+          <!--Fecha creacion-->
+          <div class="col-md-5">
+            <label for="createAt" class="form-label">Fecha de Creacion</label>
+            <input
+              formControlName="createAt"
+              type="date"
+              class="form-control"
+              name="createAt"
+              aria-describedby="helpId"
+              />
+            <small id="helpId" class="text-danger">{{getErrors('createAt', 'Fecha de creacion')}}</small>
+          </div>
+          <div class="col-md-5">
+            <label for="clienteId" >Cliente</label>
+            <select *ngIf="clientes | async as clientes"
+              formControlName="clienteId"
+              class="form-select"
+              name="clienteId"
+              aria-describedby="helpId"
+              >
+              <option value="0" hidden>--- Seleccione un cliente ---</option>
+              <option *ngFor="let cliente of clientes" [value]="cliente.clienteId">{{cliente.name}}</option>
+            </select>
+          </div>
+          <div class="col-md-1 mt-4">
+            <input
+              formControlName="active"
+              type="checkbox"
+              class="form-check-input"
+              name="active"
+              aria-describedby="helpId"
+              />
+            <label for="active" class="ms-3 form-label">Activo</label>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer">
+        <button type="submit" class="btn btn-primary">Guardar</button>
+      </div>
+    </div>
+  </form>
+</div>

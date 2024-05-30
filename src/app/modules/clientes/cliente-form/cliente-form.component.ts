@@ -34,17 +34,17 @@ export class ClienteFormComponent {
   }
 
   onSearch() {
-    this.clientesService.getClienteById(this.inputSearch.value).subscribe(cliente => {
-      if (cliente) {
-        this.cliente = cliente;
+    this.clientesService.getClienteById(this.inputSearch.value).subscribe(clienteEncontrado => {
+      if (clienteEncontrado) {
+        this.cliente = clienteEncontrado;
         this.formulario.patchValue({
-          name: cliente.name,
-          lastName: cliente.lastName,
-          cedula: cliente.cedula,
-          birthDate: formatDate(cliente.birthDate),
-          createAt: formatDate(cliente.createAt),
-          email: cliente.email,
-          active: cliente.active
+          name: clienteEncontrado.name,
+          lastName: clienteEncontrado.lastName,
+          cedula: clienteEncontrado.cedula,
+          birthDate: formatDate(clienteEncontrado.birthDate),
+          createAt: formatDate(clienteEncontrado.createAt),
+          email: clienteEncontrado.email,
+          active: clienteEncontrado.active
         });
       } else {
         alert('Cliente no encontrado');

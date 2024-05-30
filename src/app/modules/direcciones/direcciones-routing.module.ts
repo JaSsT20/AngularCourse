@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { DireccionComponent } from './direccion/direccion.component';
 import { DireccionesDetailComponent } from './direcciones-detail/direcciones-detail.component';
+import { DireccionesFormComponent } from './direcciones-form/direcciones-form.component';
 
 const routes: Routes = [
   {
@@ -15,6 +16,10 @@ const routes: Routes = [
   {
     path: 'cliente/:clienteId',
     component: DireccionesDetailComponent
+  },
+  {
+    path: 'form',
+    component: DireccionesFormComponent
   }
 ];
 
