@@ -1,0 +1,114 @@
+<div class="container w-50">
+  <form [formGroup]="formulario" (ngSubmit)="onSubmit()">
+    <div class="card text-center">
+      <div class="card-header text-center">
+        <h4>Formulario de Cliente</h4>
+
+        <div class="input-group mb-3">
+          <input type="number" class="form-control" [formControl]="inputSearch">
+          <div class="input-group-append">
+            <button class="btn btn-outline-primary" type="button" (click)="onSearch()"><i class="bi bi-search"></i></button>
+          </div>
+        </div>
+
+      </div>
+      <div class="card-body">
+        <div class="row">
+          <div class="col-md-5">
+            <!-- Name -->
+            <label for="name" class="form-label">Nombre</label>
+            <input
+              formControlName="name"
+              type="text"
+              class="form-control"
+              name="name"
+              aria-describedby="helpId"
+            />
+            <small id="helpId" class="text-danger">{{getErrors('name', 'Nombre')}}</small>
+          </div>
+          <div class="col-md-5">
+            <!-- LastaName -->
+            <label for="lastName" class="form-label">Apellido</label>
+            <input
+              formControlName="lastName"
+              type="text"
+              class="form-control"
+              name="lastName"
+              aria-describedby="helpId"
+            />
+            <small id="helpId" class="text-danger">{{getErrors('lastName', 'Apellido')}}</small>
+          </div>
+          <div class="col">
+            <!-- Active -->
+            <label for="active" class="form-label">Activo</label>
+            <input
+              formControlName="active"
+              type="checkbox"
+              class="form-check-input"
+              name="active"
+              aria-describedby="helpId"
+            />
+            <small id="helpId" class="text-danger">{{getErrors('active', 'Activo')}}</small>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col">
+            <!-- BirthDate -->
+            <label for="birthDate" class="form-label">Fecha de Nacimiento</label>
+            <input
+              formControlName="birthDate"
+              type="date"
+              class="form-control"
+              name="birthDate"
+              aria-describedby="helpId"
+            />
+            <small id="helpId" class="text-danger">{{getErrors('birthDate', 'Fecha de nacimiento')}}</small>
+          </div>
+          <div class="col">
+            <!-- CreateAt -->
+            <label for="createAt" class="form-label">Fecha de Creacion</label>
+            <input
+              formControlName="createAt"
+              type="date"
+              class="form-control"
+              name="createAt"
+              aria-describedby="helpId"
+            />
+            <small id="helpId" class="text-danger">{{getErrors('createAt', 'Creado en')}}</small>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col">
+            <!-- Cedula -->
+            <label for="cedula" class="form-label">Cedula</label>
+            <input
+              formControlName="cedula"
+              type="text"
+              class="form-control"
+              name="cedula"
+              aria-describedby="helpId"
+            />
+            <small id="helpId" class="text-danger">{{getErrors('cedula', 'Cedula')}}</small>
+          </div>
+          <div class="col-md-5">
+            <!-- Email -->
+            <label for="email" class="form-label">Email</label>
+            <input
+              formControlName="email"
+              type="email"
+              class="form-control"
+              name="email"
+              aria-describedby="helpId"
+            />
+            <small id="helpId" class="text-danger">{{getErrors('email', 'Email')}}</small>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer">
+        <button type="submit" class="btn btn-primary">Guardar</button>
+      </div>
+    </div>
+  </form>
+</div>
