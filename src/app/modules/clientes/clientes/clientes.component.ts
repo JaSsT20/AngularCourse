@@ -10,7 +10,7 @@ import { ClientesService } from '../../../servicios/clientes.service';
   styleUrl: './clientes.component.css'
 })
 export class ClientesComponent {
-  listaClientes: Observable<Cliente[]> = new Observable<Cliente[]>();
+  listaClientes: Cliente[] = [];
 
   constructor(private _servicio : ClientesService) { }
 
@@ -19,11 +19,18 @@ export class ClientesComponent {
   }
 
   cargarClientes() {
-    this.listaClientes = this._servicio.getClientes();
+    this._servicio.getClientes().subscribe({
+      next: (clientes) => {
+        this.listaClientes = clientes;
+      },
+      error: (error) => {
+        console.error(error);
+      }
+    });
   }
 
-  updateEstado(clienteId : number) {
-    this._servicio.updateCliente(clienteId);
-    this.cargarClientes();
-  }
+  // updateEstado(clienteId : number) {
+  //   this._servicio.updateCliente(clienteId);
+  //   this.cargarClientes();
+  // }
 }

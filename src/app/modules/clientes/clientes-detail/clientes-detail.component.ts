@@ -11,19 +11,25 @@ import { Observable, of } from 'rxjs';
   styleUrl: './clientes-detail.component.css'
 })
 export class ClientesDetailComponent {
-  client: Observable<Cliente | undefined> = new Observable<Cliente>();
+  cliente: Cliente = new Cliente();
 
-  constructor(private routeManager: ActivatedRoute, private _servicio: ClientesService) {
+  constructor(private routeManager: ActivatedRoute, private clientesService: ClientesService) {
 
   }
 
   ngOnInit() {
     this.routeManager.params.subscribe(params => {
       if (params['id']) {
-        const foundCliente = this._servicio.getClienteById(+params['id']);
-        if (foundCliente) {
-          this.client = foundCliente;
-        }
+        this.clientesService.getClienteById(+params['id']).subscribe({
+          next: (value) => {
+            if(value){
+              this.cliente = value;
+            }
+          },
+          error: (error) => {
+            console.error(error);
+          }
+        })
       }
     });
   }

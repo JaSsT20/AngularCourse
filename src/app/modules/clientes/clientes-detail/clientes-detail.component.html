@@ -1,4 +1,4 @@
-<ng-container *ngIf="client | async as cliente">
+<ng-container *ngIf="cliente">
   <div class="container">
     <div class="row justify-content-center">
       <div class="col-md-6">
@@ -29,7 +29,7 @@
                 </p>
                 <p class="card-text">
                   Fecha de creación:
-                  {{ cliente.createAt | date : "dd/MM/yyyy" }}
+                  {{ cliente.createdAt | date : "dd/MM/yyyy" }}
                 </p>
                 <p class="card-text">Correo electrónico: {{ cliente.email }}</p>
                 <div class="card-footer">

@@ -12,14 +12,14 @@
             <th>Acciones</th>
           </tr>
         </thead>
-        <tbody *ngIf="listaClientes | async as clientes">
-          <tr *ngFor="let cliente of clientes">
+        <tbody *ngIf="listaClientes">
+          <tr *ngFor="let cliente of listaClientes">
             <td>{{ cliente.clienteId }}</td>
             <td>{{ cliente.name }}</td>
             <td>{{ cliente.lastName }}</td>
             <td>{{ cliente.cedula }}</td>
             <td>
-              <ng-container
+              <!-- <ng-container
                 *ngIf="cliente.active; then botonActivo; else botonInactivo"
               ></ng-container>
   
@@ -33,7 +33,7 @@
                 <button (click)="updateEstado(cliente.clienteId)" class="btn btn-success me-2">
                   <i class="bi bi-plus"></i>
                 </button>
-              </ng-template>
+              </ng-template> -->
               
               <a
                 class="btn btn-primary me-2"
@@ -47,6 +47,12 @@
                 [routerLink]="['/direcciones/cliente', cliente.clienteId]"
                 >
                 <i class="bi bi-geo-alt"></i>
+              </a>
+              <a
+                class="btn btn-secondary me-2"
+                [routerLink]="['/clientes/form', cliente.clienteId]"
+                >
+                <i class="bi bi-pencil"></i>
               </a>
             </td>
           </tr>

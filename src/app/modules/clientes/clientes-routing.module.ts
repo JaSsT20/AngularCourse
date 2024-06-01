@@ -22,7 +22,12 @@ const routes: Routes = [
   {
     path: 'clientes/form',
     component: ClienteFormComponent
+  },
+  {
+    path: 'clientes/form/:id',
+    component: ClienteFormComponent
   }
+
 ];
 
 @NgModule({

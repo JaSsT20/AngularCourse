@@ -58,7 +58,7 @@
             <label for="birthDate" class="form-label">Fecha de Nacimiento</label>
             <input
               formControlName="birthDate"
-              type="date"
+              type="datetime"
               class="form-control"
               name="birthDate"
               aria-describedby="helpId"
@@ -66,16 +66,16 @@
             <small id="helpId" class="text-danger">{{getErrors('birthDate', 'Fecha de nacimiento')}}</small>
           </div>
           <div class="col">
-            <!-- CreateAt -->
-            <label for="createAt" class="form-label">Fecha de Creacion</label>
+            <!-- CreatedAt -->
+            <label for="createdAt" class="form-label">Fecha de Creacion</label>
             <input
-              formControlName="createAt"
-              type="date"
+              formControlName="createdAt"
+              type="datetime"
               class="form-control"
-              name="createAt"
+              name="createdAt"
               aria-describedby="helpId"
             />
-            <small id="helpId" class="text-danger">{{getErrors('createAt', 'Creado en')}}</small>
+            <small id="helpId" class="text-danger">{{getErrors('createdAt', 'Creado en')}}</small>
           </div>
         </div>
 
