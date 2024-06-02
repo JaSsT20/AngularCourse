@@ -7,7 +7,7 @@ export class Direccion {
   zipCode: string;
   country: string;
   active: boolean;
-  createAt: string;
+  createdAt: Date;
   clienteId: number;
 
   constructor() {
@@ -19,7 +19,7 @@ export class Direccion {
       this.zipCode = '';
       this.country = '';
       this.active = true;
-      this.createAt = '';
+      this.createdAt = new Date();
       this.clienteId = 0;
   }
 }

@@ -6,6 +6,9 @@ import { DireccionComponent } from './direccion/direccion.component';
 import { DireccionesDetailComponent } from './direcciones-detail/direcciones-detail.component';
 import { DireccionesFormComponent } from './direcciones-form/direcciones-form.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { DireccionService } from '../../servicios/direccion.service';
+import { HttpClientModule } from '@angular/common/http';
+import { ClientesService } from '../../servicios/clientes.service';
 
 
 @NgModule({
@@ -17,7 +20,12 @@ import { ReactiveFormsModule } from '@angular/forms';
   imports: [
     CommonModule,
     DireccionesRoutingModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientModule
+  ],
+  providers: [
+    DireccionService,
+    ClientesService
   ]
 })
 export class DireccionesModule { }

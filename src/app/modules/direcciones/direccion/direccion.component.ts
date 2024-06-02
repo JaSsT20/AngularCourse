@@ -10,20 +10,27 @@ import { DireccionService } from '../../../servicios/direccion.service';
   styleUrl: './direccion.component.css'
 })
 export class DireccionComponent {
-  listaDirecciones: Observable<Direccion[]> = new Observable<Direccion[]>();
+  listaDirecciones: Direccion[] = [];
 
   constructor( private _direccionService: DireccionService) { }
 
   ngOnInit() {
-    this.listaDirecciones = this._direccionService.getDirecciones();
+    this.cargarDirecciones();
   }
 
   cargarDirecciones() {
-    this.listaDirecciones = this._direccionService.getDirecciones();
+    this._direccionService.getDirecciones().subscribe({
+      next: (direcciones) => {
+        this.listaDirecciones = direcciones;
+      },
+      error: (error) => {
+        console.error(error);
+      }
+    });
   }
   
-  updateEstado(direccionId : number) {
-    this._direccionService.updateDireccion(direccionId);
-    this.cargarDirecciones();
-  }
+  // updateEstado(direccionId : number) {
+  //   this._direccionService.updateDireccion(direccionId);
+  //   this.cargarDirecciones();
+  // }
 }

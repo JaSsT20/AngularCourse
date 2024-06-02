@@ -15,8 +15,8 @@
             <th>Acciones</th>
           </tr>
         </thead>
-        <tbody *ngIf="listaDirecciones | async as direcciones">
-          <tr *ngFor="let direccion of direcciones">
+        <tbody *ngIf="listaDirecciones">
+          <tr *ngFor="let direccion of listaDirecciones">
             <td>{{direccion.addressId}}</td>
             <td>{{direccion.alias}}</td>
             <td>{{direccion.street}}</td>
@@ -25,7 +25,7 @@
             <td>{{direccion.country}}</td>
             <td>{{direccion.clienteId}}</td>
             <td>
-              <ng-container
+              <!-- <ng-container
                *ngIf="direccion.active; then botonActivo; else botonInactivo">
               </ng-container>
       
@@ -39,7 +39,7 @@
                 <button (click)="updateEstado(direccion.addressId)" class="btn btn-success me-2">
                   <i class="bi bi-plus"></i>
                 </button>
-              </ng-template>
+              </ng-template> -->
       
               <a class="btn btn-primary" [routerLink]="['/direcciones/direccion', direccion.addressId]">
               <i class="bi bi-eye"></i></a>

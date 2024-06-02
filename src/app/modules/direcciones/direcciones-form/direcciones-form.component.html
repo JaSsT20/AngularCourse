@@ -90,19 +90,19 @@
         <div class="row">
           <!--Fecha creacion-->
           <div class="col-md-5">
-            <label for="createAt" class="form-label">Fecha de Creacion</label>
+            <label for="createdAt" class="form-label">Fecha de Creacion</label>
             <input
-              formControlName="createAt"
-              type="date"
+              formControlName="createdAt"
+              type="datetime"
               class="form-control"
-              name="createAt"
+              name="createdAt"
               aria-describedby="helpId"
               />
-            <small id="helpId" class="text-danger">{{getErrors('createAt', 'Fecha de creacion')}}</small>
+            <small id="helpId" class="text-danger">{{getErrors('createdAt', 'Fecha de creacion')}}</small>
           </div>
           <div class="col-md-5">
             <label for="clienteId" >Cliente</label>
-            <select *ngIf="clientes | async as clientes"
+            <select *ngIf="clientes"
               formControlName="clienteId"
               class="form-select"
               name="clienteId"
