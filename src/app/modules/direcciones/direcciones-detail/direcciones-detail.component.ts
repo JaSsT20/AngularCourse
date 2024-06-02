@@ -11,18 +11,32 @@ import { DireccionService } from '../../../servicios/direccion.service';
 })
 export class DireccionesDetailComponent {
 
-  listaFiltrada: Observable<Direccion[]> | null = null;
-  direccion: Observable<Direccion | undefined> | null = null;
+  listaFiltrada: Direccion[] | null = null;
+  direccion: Direccion | undefined | null = null;
 
   constructor(private route: ActivatedRoute, private _direccionesService: DireccionService) { }
 
   ngOnInit() {
     this.route.params.subscribe(params => {
       if (params['clienteId']) {
-        this.listaFiltrada = this._direccionesService.getDireccionesDeCliente(+params['clienteId']);
+        this._direccionesService.getDireccionesDeCliente(+params['clienteId']).subscribe({
+          next: (direcciones) => {
+            this.listaFiltrada = direcciones;
+          },
+          error: (error) => {
+            console.error(error);
+          }
+        });
       } 
       else if (params['id']) {
-        this.direccion = this._direccionesService.getDireccionById(+params['id']);
+        this._direccionesService.getDireccionById(+params['id']).subscribe({
+          next: (direccion) => {
+            this.direccion = direccion;
+          },
+          error: (error) => {
+            console.error(error);
+          }
+        });
       }
     });
   }

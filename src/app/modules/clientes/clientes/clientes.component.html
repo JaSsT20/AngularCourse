@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container h-75">
   <div class="card">
     <div class="card-header"><h3>Lista de clientes</h3></div>
     <div class="card-body">
@@ -19,7 +19,7 @@
             <td>{{ cliente.lastName }}</td>
             <td>{{ cliente.cedula }}</td>
             <td>
-              <!-- <ng-container
+              <ng-container
                 *ngIf="cliente.active; then botonActivo; else botonInactivo"
               ></ng-container>
   
@@ -33,7 +33,7 @@
                 <button (click)="updateEstado(cliente.clienteId)" class="btn btn-success me-2">
                   <i class="bi bi-plus"></i>
                 </button>
-              </ng-template> -->
+              </ng-template>
               
               <a
                 class="btn btn-primary me-2"

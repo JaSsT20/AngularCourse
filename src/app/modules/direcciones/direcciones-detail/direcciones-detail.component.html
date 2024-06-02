@@ -1,5 +1,5 @@
 <div class="container">
-  <ng-container *ngIf="direccion | async as dir; else listaDirecciones">
+  <ng-container *ngIf="direccion; else listaDirecciones">
     <div class="row justify-content-center">
       <div class="col-md-6">
         <div class="card shadow-lg">
@@ -7,54 +7,54 @@
             <h3 class="card-title">Detalle de la Dirección</h3>
           </div>
           <div class="card-body">
-            <h4 class="card-title">{{ dir!.alias }}</h4>
+            <h4 class="card-title">{{ direccion.alias }}</h4>
             <p class="card-text">
-              {{ dir!.street }}, {{ dir!.city }}, {{ dir!.state }}
-              {{ dir!.zipCode }}
+              {{ direccion.street }}, {{ direccion.city }}, {{ direccion.state }} {{ direccion.zipCode }}
             </p>
-            <p class="card-text">{{ dir!.country }}</p>
+            <p class="card-text">{{ direccion.country }}</p>
             <div class="d-flex justify-content-end">
-              <span class="badge bg-{{ dir!.active ? 'success' : 'danger' }}">
-                {{ dir!.active ? "Activa" : "Inactiva" }}
+              <span class="badge bg-{{ direccion.active ? 'success' : 'danger' }}">
+                {{ direccion.active ? "Activa" : "Inactiva" }}
               </span>
             </div>
-            <p class="card-text">
-              Fecha de creación: {{ dir!.createdAt | date : "dd/MM/yyyy" }}
-            </p>
-            <p class="card-text">Cliente ID: {{ dir!.clienteId }}</p>
+            <p class="card-text">Fecha de creación: {{ direccion.createdAt | date : "dd/MM/yyyy" }}</p>
+            <p class="card-text">Cliente ID: {{ direccion.clienteId }}</p>
           </div>
         </div>
       </div>
     </div>
   </ng-container>
-</div>
 
-<ng-template #listaDirecciones>
-  <div class="row" *ngIf="listaFiltrada | async as lista">
-    <div class="col-md-6" *ngFor="let direccion of lista">
-      <div class="card shadow-lg mb-4">
-        <div class="card-header bg-primary text-white">
-          <h3 class="card-title">{{ direccion.alias }}</h3>
-        </div>
-        <div class="card-body">
-          <p class="card-text">
-            {{ direccion.street }}, {{ direccion.city }}, {{ direccion.state }}
-            {{ direccion.zipCode }}
-          </p>
-          <p class="card-text">{{ direccion.country }}</p>
-          <div class="d-flex justify-content-end">
-            <span
-              class="badge bg-{{ direccion.active ? 'success' : 'danger' }}"
-            >
-              {{ direccion.active ? "Activa" : "Inactiva" }}
-            </span>
+  <ng-template #listaDirecciones>
+    <div class="row" *ngIf="listaFiltrada && listaFiltrada.length > 0; else noDir">
+      <div class="col-md-6" *ngFor="let direccion of listaFiltrada">
+        <div class="card shadow-lg mb-4">
+          <div class="card-header bg-primary text-white">
+            <h3 class="card-title">{{ direccion.alias }}</h3>
           </div>
-          <p class="card-text">
-            Fecha de creación: {{ direccion.createdAt | date : "dd/MM/yyyy" }}
-          </p>
-          <p class="card-text">Cliente ID: {{ direccion.clienteId }}</p>
+          <div class="card-body">
+            <p class="card-text">
+              {{ direccion.street }}, {{ direccion.city }}, {{ direccion.state }} {{ direccion.zipCode }}
+            </p>
+            <p class="card-text">{{ direccion.country }}</p>
+            <div class="d-flex justify-content-end">
+              <span class="badge bg-{{ direccion.active ? 'success' : 'danger' }}">
+                {{ direccion.active ? "Activa" : "Inactiva" }}
+              </span>
+            </div>
+            <p class="card-text">Fecha de creación: {{ direccion.createdAt | date : "dd/MM/yyyy" }}</p>
+            <p class="card-text">Cliente ID: {{ direccion.clienteId }}</p>
+          </div>
         </div>
       </div>
     </div>
-  </div>
-</ng-template>
+  </ng-template>
+
+  <ng-template #noDir>
+      <div class="alert alert-danger">
+        <h3 class="text-center text-danger">
+          No se encontraron direcciones para este cliente o aún están cargando...
+        </h3>
+      </div>
+  </ng-template>
+</div>

@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { Cliente } from '../../../models/cliente';
-import { Observable } from 'rxjs';
 import { ClientesService } from '../../../servicios/clientes.service';
 
 @Component({
@@ -29,8 +28,19 @@ export class ClientesComponent {
     });
   }
 
-  // updateEstado(clienteId : number) {
-  //   this._servicio.updateCliente(clienteId);
-  //   this.cargarClientes();
-  // }
+  updateEstado(clienteId: number) {
+    const cliente = this.listaClientes.find(c => c.clienteId === clienteId);
+    if (cliente) {
+      cliente.active = !cliente.active;
+      this._servicio.updateCliente(cliente).subscribe({
+        next: () => {
+          console.log('Estado actualizado');
+        },
+        error: (error) => {
+          console.error('Error al actualizar el estado', error);
+          cliente.active = !cliente.active;
+        }
+      });
+    }
+  }
 }
